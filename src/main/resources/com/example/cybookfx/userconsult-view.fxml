@@ -8,6 +8,8 @@
 
     <children>
         <Button fx:id="backButton" text="Back to Main" onAction="#handleBackButton" />
+        <Button text="New Book Loan" onAction="#openBookLoan" />
+    <Button text="Add user" onAction="#openAddUser" />
         <!-- Ajoutez d'autres éléments d'interface utilisateur ici si nécessaire -->
     </children>
     <padding>

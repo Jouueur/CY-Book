@@ -3,32 +3,18 @@ package com.example.cybookfx;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import javafx.scene.control.Button;
 
 import java.io.IOException;
 
-public class MenuController {
+public class BookLoanController {
 
     @FXML
-    private Button buttonUserConsult;
-    @FXML
-    private Button buttonOverdueBook;
-    @FXML
-    private Button buttonSearchBook;
+    private Button backButton;
 
     @FXML
-    protected void onOverdueBookButtonClick() {
-        loadPage("overduebook-view.fxml");
-    }
-
-    @FXML
-    protected void onSearchBookButtonClick() {
-        loadPage("searchbook-view.fxml");
-    }
-
-    @FXML
-    protected void onUserConsultButtonClick() {
+    protected void returnToUserConsult() {
         loadPage("userconsult-view.fxml");
     }
 
@@ -36,7 +22,7 @@ public class MenuController {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
             Scene scene = new Scene(fxmlLoader.load());
-            Stage stage = (Stage) buttonOverdueBook.getScene().getWindow();
+            Stage stage = (Stage) backButton.getScene().getWindow();
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {

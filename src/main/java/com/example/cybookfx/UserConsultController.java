@@ -18,6 +18,16 @@ public class UserConsultController {
         loadPage("menu-view.fxml");
     }
 
+    @FXML
+    protected void openBookLoan() {
+        loadPage("bookloan-view.fxml");
+    }
+
+    @FXML
+    protected void openAddUser() {
+        loadPage("createuserpage-view.fxml");
+    }
+
     private void loadPage(String fxmlFile) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
