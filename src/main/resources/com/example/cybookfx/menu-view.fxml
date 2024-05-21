@@ -3,14 +3,22 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 
-<VBox xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cybookfx.MenuController">
+<HBox xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cybookfx.MenuController" stylesheets="@styles.css" fx:id="rootHBox">
     <children>
-        <Button fx:id="buttonUserConsult" text="User Consult" onAction="#onUserConsultButtonClick"/>
-        <Button fx:id="buttonOverdueBook" text="Overdue Book" onAction="#onOverdueBookButtonClick"/>
-        <Button fx:id="buttonSearchBook" text="Search Book" onAction="#onSearchBookButtonClick"/>
+        <VBox fx:id="leftBox" styleClass="left-box" spacing="10">
+            <children>
+                <Button fx:id="buttonUserConsult" text="User Consult" onAction="#onUserConsultButtonClick"/>
+                <Button fx:id="buttonOverdueBook" text="Overdue Book" onAction="#onOverdueBookButtonClick"/>
+                <Button fx:id="buttonSearchBook" text="Search Book" onAction="#onSearchBookButtonClick"/>
+            </children>
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+        </VBox>
+        <VBox fx:id="rightBox" styleClass="right-box">
+            <!-- Contenu de droite -->
+        </VBox>
     </children>
-    <padding>
-        <Insets top="10" right="10" bottom="10" left="10"/>
-    </padding>
-</VBox>
+</HBox>

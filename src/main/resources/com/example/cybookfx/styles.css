@@ -1,38 +1,15 @@
-.root {
-    -fx-background-color: #f0f4f8; /* Couleur de fond */
+.left-box {
+    -fx-background-color: #f0f0f0;
 }
 
-Button {
-    -fx-font-size: 24px;
+.right-box {
+    -fx-background-color: #ffffff;
+    -fx-padding: 10px;
+}
+
+.button {
+    -fx-background-color: #4CAF50;
     -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-alignment: center;
-    -fx-background-radius: 10px;
-    -fx-pref-width: 500px; /* Pour occuper toute la largeur */
-    -fx-pref-height: 25%; /* Pour occuper un quart de la hauteur */
-    -fx-padding: 10px; /* Ajouter du padding pour plus de lisibilité */
-}
-
-#button1 {
-    -fx-background-color: #e74c3c; /* Rouge */
-}
-
-#button2 {
-    -fx-background-color: #3498db; /* Bleu */
-}
-
-#button3 {
-    -fx-background-color: #2ecc71; /* Vert */
-}
-
-#button4 {
-    -fx-background-color: #f39c12; /* Orange */
-}
-
-Button:hover {
-    -fx-background-color: #dcdcdc; /* Gris clair sur hover */
-    -fx-text-fill: black; /* Texte noir sur hover */
-    -fx-border-color: black;
-    -fx-border-radius: 10px;
-    -fx-border-width: 2px;
+    -fx-font-size: 14px;
+    -fx-padding: 10px;
 }
