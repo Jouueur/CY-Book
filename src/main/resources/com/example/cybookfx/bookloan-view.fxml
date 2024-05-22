@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cybookfx.BookLoanController">
+<?import javafx.scene.control.Label?>
+<VBox fx:id="rootVBox" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cybookfx.BookLoanController">
     <children>
-        <Button fx:id="backButton" text="Return to User Consult" onAction="#returnToUserConsult" />
+        <HBox fx:id="topBox" prefHeight="51.0" prefWidth="798.0" styleClass="top-box" alignment="CENTER">
+            <children>
+                <!-- Bouton avec une image -->
+                <Button fx:id="backButton" onAction="#returnToUserConsult" styleClass="backButton">
+                    <graphic>
+                        <ImageView fitWidth="50" fitHeight="50">
+                            <image>
+                                <Image url="@homeIcon.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Label fx:id="topBoxTitle" text="Borrow a book" styleClass="top-box-title" />
+            </children>
+        </HBox>
+        <HBox fx:id="mainBox" prefHeight="559.0" prefWidth="798.0" spacing="10">
+            <children>
+                <VBox fx:id="leftBox" spacing="10" styleClass="left-box">
+                    <children>
+                        <!-- Ajoutez vos éléments ici -->
+                    </children>
+                    <padding>
+                        <Insets bottom="10" left="10" right="10" top="10" />
+                    </padding>
+                </VBox>
+                <VBox fx:id="rightBox" styleClass="right-box">
+                    <!-- Ajoutez vos éléments ici -->
+                </VBox>
+            </children>
+        </HBox>
     </children>
-    <padding>
-        <Insets top="10" right="10" bottom="10" left="10"/>
-    </padding>
 </VBox>

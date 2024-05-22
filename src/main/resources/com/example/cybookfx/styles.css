@@ -7,9 +7,29 @@
     -fx-padding: 10px;
 }
 
+.top-box {
+    -fx-background-color: black;
+    -fx-padding: 10px;
+}
+
+.top-box-title {
+    -fx-text-fill: white;
+    -fx-font-size: 24px; /* Ajustez la taille de la police selon vos besoins */
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+}
+
 .button {
-    -fx-background-color: #4CAF50;
+    -fx-background-color: black;
     -fx-text-fill: white;
     -fx-font-size: 14px;
     -fx-padding: 10px;
+}
+
+.button:hover {
+    -fx-background-color: grey;
+}
+
+.backButton {
+    -fx-background-color: black;
 }

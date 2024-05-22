@@ -2,23 +2,32 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<HBox xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cybookfx.MenuController" stylesheets="@styles.css" fx:id="rootHBox">
+<VBox fx:id="rootVBox" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cybookfx.MenuController">
     <children>
-        <VBox fx:id="leftBox" styleClass="left-box" spacing="10">
+        <HBox fx:id="topBox" prefHeight="51.0" prefWidth="798.0" styleClass="top-box" alignment="CENTER">
             <children>
-                <Button fx:id="buttonUserConsult" text="User Consult" onAction="#onUserConsultButtonClick"/>
-                <Button fx:id="buttonOverdueBook" text="Overdue Book" onAction="#onOverdueBookButtonClick"/>
-                <Button fx:id="buttonSearchBook" text="Search Book" onAction="#onSearchBookButtonClick"/>
+                <Label fx:id="topBoxTitle" text="Library Software Menu" styleClass="top-box-title" />
             </children>
-            <padding>
-                <Insets top="10" right="10" bottom="10" left="10"/>
-            </padding>
-        </VBox>
-        <VBox fx:id="rightBox" styleClass="right-box">
-            <!-- Contenu de droite -->
-        </VBox>
+        </HBox>
+        <HBox fx:id="mainBox" prefHeight="559.0" prefWidth="798.0" spacing="10">
+            <children>
+                <VBox fx:id="leftBox" spacing="10" styleClass="left-box">
+                    <children>
+                        <Button fx:id="buttonUserConsult" onAction="#onUserConsultButtonClick" text="User Consult" />
+                        <Button fx:id="buttonOverdueBook" onAction="#onOverdueBookButtonClick" text="Overdue Book" />
+                        <Button fx:id="buttonSearchBook" onAction="#onSearchBookButtonClick" text="Search Book" />
+                    </children>
+                    <padding>
+                        <Insets bottom="10" left="10" right="10" top="10" />
+                    </padding>
+                </VBox>
+                <VBox fx:id="rightBox" styleClass="right-box">
+                </VBox>
+            </children>
+        </HBox>
     </children>
-</HBox>
+</VBox>
