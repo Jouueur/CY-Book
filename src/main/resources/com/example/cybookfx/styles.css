@@ -27,7 +27,7 @@
 }
 
 .button:hover {
-    -fx-background-color: grey;
+    -fx-background-color: #ff8df3;
 }
 
 .backButton {

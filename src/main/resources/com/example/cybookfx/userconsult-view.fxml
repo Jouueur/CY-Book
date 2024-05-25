@@ -1,44 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.image.ImageView?>
-
-
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
-<VBox fx:id="rootVBox" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cybookfx.UserConsultController">
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="rootVBox" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cybookfx.UserConsultController">
     <children>
-        <HBox fx:id="topBox" prefHeight="51.0" prefWidth="798.0" styleClass="top-box" alignment="CENTER">
+        <HBox fx:id="topBox" alignment="CENTER" prefHeight="51.0" prefWidth="798.0" styleClass="top-box">
             <children>
-                <!-- Bouton avec une image -->
                 <Button fx:id="backButton" onAction="#handleBackButton" styleClass="backButton">
                     <graphic>
-                        <ImageView fitWidth="50" fitHeight="50">
+                        <ImageView fitHeight="50" fitWidth="50">
                             <image>
-                                <Image url="@homeIcon.png"/>
+                                <Image url="@homeIcon.png" />
                             </image>
                         </ImageView>
                     </graphic>
                 </Button>
-                <Label fx:id="topBoxTitle" text="Consult users" styleClass="top-box-title" />
+                <Label fx:id="topBoxTitle" styleClass="top-box-title" text="Consult users" />
             </children>
         </HBox>
         <HBox fx:id="mainBox" prefHeight="559.0" prefWidth="798.0" spacing="10">
             <children>
-                <VBox fx:id="leftBox" spacing="10" styleClass="left-box">
+                <VBox fx:id="leftBox" prefHeight="620.0" prefWidth="70.0" spacing="10" styleClass="left-box">
                     <children>
-                        <Button fx:id="buttonBookLoan" text="New Book Loan" onAction="#openBookLoan" />
-                        <Button fx:id="buttonAddUser" text="Add user" onAction="#openAddUser" />
+                        <Button fx:id="buttonBookLoan" onAction="#openBookLoan" text="New Book Loan" />
+                        <Button fx:id="buttonAddUser"  text="Add user" />
                     </children>
                     <padding>
                         <Insets bottom="10" left="10" right="10" top="10" />
                     </padding>
                 </VBox>
                 <VBox fx:id="rightBox" styleClass="right-box">
+                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1080.0">
+                        <children>
+                            <Label layoutX="30.0" layoutY="27.0" text="Search user">
+                                <font>
+                                    <Font size="14.0" />
+                                </font>
+                            </Label>
+                            <TableView fx:id="userTableView" layoutX="30.0" layoutY="64.0" prefHeight="500.0" prefWidth="1020.0">
+                                <columns>
+                                    <TableColumn fx:id="firstNameColumn" prefWidth="224.0" text="First Name" />
+                                    <TableColumn fx:id="lastNameColumn" prefWidth="195.0" text="Last Name" />
+                                    <TableColumn fx:id="emailColumn" prefWidth="600.0" text="Email" />
+                                </columns>
+                            </TableView>
+                            <TextField fx:id="keywordTextField" layoutX="112.0" layoutY="25.0" prefHeight="25.0" prefWidth="881.0" promptText="Enter the user's first name, last name or email..." />
+                            <ButtonBar layoutX="850.0" layoutY="560.0" prefHeight="40.0" prefWidth="200.0">
+                                <buttons>
+                                    <Button fx:id="selectUserButton" mnemonicParsing="false" onAction="#handleSelectUserButton" text="Select User" />
+                                </buttons>
+                            </ButtonBar>
+                            <Button fx:id="addUserButton" layoutX="1000.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleAddUser" prefHeight="25.0" prefWidth="50.0" text="add" />
+                        </children>
+                    </Pane>
                 </VBox>
             </children>
         </HBox>
