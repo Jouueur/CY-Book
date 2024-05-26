@@ -1,0 +1,35 @@
+.left-box {
+    -fx-background-color: #f0f0f0;
+}
+
+.right-box {
+    -fx-background-color: #ffffff;
+    -fx-padding: 10px;
+}
+
+.top-box {
+    -fx-background-color: black;
+    -fx-padding: 10px;
+}
+
+.top-box-title {
+    -fx-text-fill: white;
+    -fx-font-size: 24px; /* Ajustez la taille de la police selon vos besoins */
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+}
+
+.button {
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 5px;
+}
+
+.button:hover {
+    -fx-background-color: #011F4B;
+}
+
+.backButton {
+    -fx-background-color: black;
+}
