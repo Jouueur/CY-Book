@@ -12,7 +12,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
 
@@ -34,9 +33,7 @@ public class CustomerInformationsController {
     @FXML private Button addLoan;
 
     @FXML private ListView<Book> listViewOnLoan;
-    //overDueBorrowingBook
     @FXML private ListView<Book> listViewOverDueBorrowingBook;
-    //overDueBorrowingNotReturnedBook
     @FXML private ListView<Book> listViewOverDueBorrowingNotReturnedBook;
 
     private User user;
@@ -44,7 +41,9 @@ public class CustomerInformationsController {
     private ArrayList<Book> overDueBorrowingBook;
     private ArrayList<Book> overDueBorrowingNotReturnedBook;
 
-
+    /**
+     * Sets the first name of the user.
+     */
     @FXML
     private void setEditFirstName() {
         try (Connection connection = DriverManager.getConnection(
@@ -61,6 +60,9 @@ public class CustomerInformationsController {
         }
     }
 
+    /**
+     * Opens a popup to edit the first name.
+     */
     @FXML
     private void editFirstNamePopup() {
         TextInputDialog dialog = new TextInputDialog();
@@ -79,7 +81,6 @@ public class CustomerInformationsController {
                     int userId = user.userConnection(connection);
                     user.updateFirstNameById(userId, newFirstName, connection);
                     firstName.setText(newFirstName);
-                    // Update the User object to reflect the changes
                     user.setFirstName(newFirstName);
 
                 } catch (SQLException e) {
@@ -92,6 +93,9 @@ public class CustomerInformationsController {
         });
     }
 
+    /**
+     * Opens a popup to edit the last name.
+     */
     @FXML
     private void editLastNamePopup() {
         TextInputDialog dialog = new TextInputDialog();
@@ -110,7 +114,6 @@ public class CustomerInformationsController {
                     int userId = user.userConnection(connection);
                     user.updateLastNameById(userId, newLastName, connection);
                     lastName.setText(newLastName);
-                    // Update the User object to reflect the changes
                     user.setLastName(newLastName);
 
                 } catch (SQLException e) {
@@ -123,6 +126,9 @@ public class CustomerInformationsController {
         });
     }
 
+    /**
+     * Opens a popup to edit the email.
+     */
     @FXML
     private void editEmailPopup() {
         TextInputDialog dialog = new TextInputDialog();
@@ -141,7 +147,6 @@ public class CustomerInformationsController {
                     int userId = user.userConnection(connection);
                     user.updateEmailById(userId, newEmail, connection);
                     email.setText(newEmail);
-                    // Update the User object to reflect the changes
                     user.setEmail(newEmail);
 
                 } catch (SQLException e) {
@@ -154,6 +159,9 @@ public class CustomerInformationsController {
         });
     }
 
+    /**
+     * Sets the lists of books for the user.
+     */
     private void setUserLists(){
         try (Connection connection = DriverManager.getConnection(
                 "jdbc:mysql://127.0.0.1:3306/cy_book",
@@ -169,23 +177,38 @@ public class CustomerInformationsController {
             overDueBorrowingNotReturnedBook = user.overDueBorrowingNotReturnedBook(connection);
             listViewOverDueBorrowingNotReturnedBook.getItems().addAll(overDueBorrowingNotReturnedBook);
 
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Validates a name.
+     *
+     * @param name The name to validate.
+     * @return true if the name is valid, false otherwise.
+     */
     private boolean isValidName(String name) {
         return name != null && name.matches("[\\p{L} '-]+");
     }
 
+    /**
+     * Validates an email.
+     *
+     * @param email The email to validate.
+     * @return true if the email is valid, false otherwise.
+     */
     private boolean isValidEmail(String email) {
-        // Simple regex for email validation
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
         Pattern pattern = Pattern.compile(emailRegex);
         return email != null && pattern.matcher(email).matches();
     }
 
+    /**
+     * Sets the user and initializes the user details and lists.
+     *
+     * @param user The user to set.
+     */
     public void setUser(User user) {
         this.user = user;
         firstName.setText(user.getFirstName());
@@ -194,6 +217,13 @@ public class CustomerInformationsController {
         setUserLists();
     }
 
+    /**
+     * Shows an alert with the specified title, message, and alert type.
+     *
+     * @param title The title of the alert.
+     * @param message The message to display.
+     * @param alertType The type of alert.
+     */
     private void showAlert(String title, String message, Alert.AlertType alertType) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
@@ -204,55 +234,60 @@ public class CustomerInformationsController {
 
     /**
      * Returns the selected book from the listViewOnLoan.
+     *
      * @return The selected Book object, or null if no book is selected.
      */
     public Book getSelectedBookOnLoan() {
         return listViewOnLoan.getSelectionModel().getSelectedItem();
     }
+
+    /**
+     * Shows details of the selected book and removes it from the loan list.
+     */
     @FXML
     private void showSelectedBookDetails() {
-
         try (Connection connection = DriverManager.getConnection(
                 "jdbc:mysql://127.0.0.1:3306/cy_book",
                 "root",
                 "book")) {
 
-
-        Book selectedBook = getSelectedBookOnLoan();
-        if (selectedBook != null) {
-            switch (user.modifBorrowing(connection,selectedBook.getARK())){
-                case 0:
-
-                    showAlert("Success", "Book successfully removed", Alert.AlertType.INFORMATION);
-                    break;
-                case -1:
-
-                    showAlert("User error", "No users found", Alert.AlertType.WARNING);
-                    break;
-                case -2:
-
-                    showAlert("Database error", "Error in sql request", Alert.AlertType.WARNING);
-                    break;
-
+            Book selectedBook = getSelectedBookOnLoan();
+            if (selectedBook != null) {
+                switch (user.modifBorrowing(connection, selectedBook.getARK())) {
+                    case 0:
+                        showAlert("Success", "Book successfully removed", Alert.AlertType.INFORMATION);
+                        break;
+                    case -1:
+                        showAlert("User error", "No users found", Alert.AlertType.WARNING);
+                        break;
+                    case -2:
+                        showAlert("Database error", "Error in SQL request", Alert.AlertType.WARNING);
+                        break;
+                }
+            } else {
+                showAlert("No Selection", "No book selected.", Alert.AlertType.WARNING);
             }
-        } else {
-            showAlert("No Selection", "No book selected.", Alert.AlertType.WARNING);
-        }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-
-    /////////// add loan ///////////
-
-
+    /**
+     * Opens the add loan view.
+     */
     @FXML
     void addLoanAction(){
         String fxmlFile = "bookloan-view.fxml";
         loadPage2(fxmlFile,user);
     }
+
+    /**
+     * Loads the specified FXML file into a new stage.
+     *
+     * @param fxmlFile The path to the FXML file.
+     * @param user The User object to pass to the controller.
+     */
     private void loadPage2(String fxmlFile, User user) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));

@@ -71,14 +71,14 @@ public class SearchBookController {
     public void initialize() {
         rootVBox.heightProperty().addListener((obs, oldVal, newVal) -> {
             double newHeight = newVal.doubleValue();
-            topBox.setPrefHeight(newHeight * 0.15); // 15% de la hauteur du VBox parent
-            mainBox.setPrefHeight(newHeight * 0.85); // 85% de la hauteur du VBox parent
+            topBox.setPrefHeight(newHeight * 0.15);
+            mainBox.setPrefHeight(newHeight * 0.85);
         });
 
         rootVBox.widthProperty().addListener((obs, oldVal, newVal) -> {
             double newWidth = newVal.doubleValue();
-            leftBox.setPrefWidth(newWidth * 0.3); // 30% de la largeur du VBox parent
-            rightBox.setPrefWidth(newWidth * 0.7); // 70% de la largeur du VBox parent
+            leftBox.setPrefWidth(newWidth * 0.3);
+            rightBox.setPrefWidth(newWidth * 0.7);
         });
 
 
@@ -86,7 +86,7 @@ public class SearchBookController {
         if (topBoxTitle != null) {
             topBox.widthProperty().addListener((obs, oldVal, newVal) -> {
                 double newWidth = newVal.doubleValue();
-                topBoxTitle.setPrefWidth(newWidth); // Ajuster la largeur du titre en conséquence
+                topBoxTitle.setPrefWidth(newWidth);
             });
         }
     }
@@ -165,12 +165,12 @@ public class SearchBookController {
             updateBookGrid(searchedBooksList);
         });
 
-        // Vérifier si le bouton "Précédent" doit être affiché
+
         if (startIndex > 0) {
             paginationBox.getChildren().add(previousButton);
         }
 
-        // Vérifier si le bouton "Suivant" doit être affiché
+
         if (startIndex + 16 < searchedBooksList.size()) {
             paginationBox.getChildren().add(nextButton);
         }
@@ -180,8 +180,8 @@ public class SearchBookController {
 
     private VBox createBookDisplayContainer(ArrayList<Book> searchedBooksList) {
         VBox container = new VBox();
-        container.setPrefWidth(1200); // Définir une largeur préférée de 600 pixels
-        container.setPrefHeight(450); // Définir une largeur préférée de 600 pixels
+        container.setPrefWidth(1200);
+        container.setPrefHeight(450);
 
         GridPane bookGrid = createBookGrid(searchedBooksList);
         ScrollPane scrollPane = new ScrollPane(bookGrid);
@@ -212,7 +212,6 @@ public class SearchBookController {
         }
     }
 
-// Autres méthodes inchangées
 
 
 

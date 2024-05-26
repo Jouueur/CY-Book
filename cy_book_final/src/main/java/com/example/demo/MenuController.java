@@ -45,28 +45,28 @@ public class MenuController {
     public void initialize() {
         rootVBox.heightProperty().addListener((obs, oldVal, newVal) -> {
             double newHeight = newVal.doubleValue();
-            topBox.setPrefHeight(newHeight * 0.15); // 15% de la hauteur du VBox parent
-            mainBox.setPrefHeight(newHeight * 0.85); // 85% de la hauteur du VBox parent
+            topBox.setPrefHeight(newHeight * 0.15); // 15% of the parent VBox height
+            mainBox.setPrefHeight(newHeight * 0.85); // 85% of the parent VBox height
         });
 
         rootVBox.widthProperty().addListener((obs, oldVal, newVal) -> {
             double newWidth = newVal.doubleValue();
-            leftBox.setPrefWidth(newWidth * 0.3); // 30% de la largeur du VBox parent
-            rightBox.setPrefWidth(newWidth * 0.7); // 70% de la largeur du VBox parent
+            leftBox.setPrefWidth(newWidth * 0.3); // 30% of the parent VBox width
+            rightBox.setPrefWidth(newWidth * 0.7); // 70% of the parent VBox width
         });
 
         mainBox.widthProperty().addListener((obs, oldVal, newVal) -> {
             double newWidth = newVal.doubleValue();
-            buttonUserConsult.setPrefWidth(newWidth * 0.3); // Ajuster la largeur des boutons en conséquence
+            buttonUserConsult.setPrefWidth(newWidth * 0.3); // Adjust button widths accordingly
             buttonOverdueBook.setPrefWidth(newWidth * 0.3);
             buttonSearchBook.setPrefWidth(newWidth * 0.3);
         });
 
-        // Assurer que le titre prend toute la largeur de topBox
+        // Ensure the title takes up the full width of topBox
         if (topBoxTitle != null) {
             topBox.widthProperty().addListener((obs, oldVal, newVal) -> {
                 double newWidth = newVal.doubleValue();
-                topBoxTitle.setPrefWidth(newWidth); // Ajuster la largeur du titre en conséquence
+                topBoxTitle.setPrefWidth(newWidth); // Adjust the title width accordingly
             });
         }
     }
@@ -91,10 +91,9 @@ public class MenuController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = (Stage) buttonOverdueBook.getScene().getWindow();
-
             stage.setScene(scene);
-            stage.setMaximized(true); // Maximiser la fenêtre
             stage.show();
+            stage.setMaximized(true);
         } catch (IOException e) {
             e.printStackTrace();
         }

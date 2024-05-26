@@ -54,21 +54,20 @@ public class OverdueBookController {
 
         rootVBox.heightProperty().addListener((obs, oldVal, newVal) -> {
             double newHeight = newVal.doubleValue();
-            topBox.setPrefHeight(newHeight * 0.15); // 15% de la hauteur du VBox parent
-            mainBox.setPrefHeight(newHeight * 0.85); // 85% de la hauteur du VBox parent
+            topBox.setPrefHeight(newHeight * 0.15);
+            mainBox.setPrefHeight(newHeight * 0.85);
         });
 
         rootVBox.widthProperty().addListener((obs, oldVal, newVal) -> {
             double newWidth = newVal.doubleValue();
-            leftBox.setPrefWidth(newWidth * 0.3); // 30% de la largeur du VBox parent
-            rightBox.setPrefWidth(newWidth * 0.7); // 70% de la largeur du VBox parent
+            leftBox.setPrefWidth(newWidth * 0.3);
+            rightBox.setPrefWidth(newWidth * 0.7);
         });
 
-        // Assurer que le titre prend toute la largeur de topBox
         if (topBoxTitle != null) {
             topBox.widthProperty().addListener((obs, oldVal, newVal) -> {
                 double newWidth = newVal.doubleValue();
-                topBoxTitle.setPrefWidth(newWidth); // Ajuster la largeur du titre en conséquence
+                topBoxTitle.setPrefWidth(newWidth);
             });
         }
 

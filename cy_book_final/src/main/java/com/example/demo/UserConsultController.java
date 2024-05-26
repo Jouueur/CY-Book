@@ -208,10 +208,9 @@ public class UserConsultController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = (Stage) backButton.getScene().getWindow();
-
             stage.setScene(scene);
-            stage.setMaximized(true); // Maximiser la fenêtre
             stage.show();
+            stage.setMaximized(true);
         } catch (IOException e) {
             e.printStackTrace();
         }
